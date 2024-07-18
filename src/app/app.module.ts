@@ -11,6 +11,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddExpenseComponent } from './add-expense/add-expense.component';
 import { ExpenseListComponent } from './expense-list/expense-list.component';
 import { ExpenseDetailComponent } from './expense-detail/expense-detail.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [
@@ -25,11 +29,13 @@ import { ExpenseDetailComponent } from './expense-detail/expense-detail.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,ReactiveFormsModule
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient()
   ],
   bootstrap: [AppComponent]
 })

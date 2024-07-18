@@ -1,0 +1,25 @@
+{
+    "expenses": [
+      {
+        "id": "1",
+        "name": "Grocery",
+        "amount": 50,
+        "date": "2024-07-01"
+      },
+      {
+        "id": "2",
+        "name": "Rent",
+        "amount": 500,
+        "date": "2024-07-01"
+      }
+    ],
+    "users": [
+      {
+        "id": "1",
+        "name": "John Doe",
+        "email": "john@example.com",
+        "password": "password"
+      }
+    ]
+  }
+  
