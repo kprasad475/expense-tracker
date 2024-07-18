@@ -7,7 +7,7 @@ import { Observable, throwError } from 'rxjs';
 })
 export class AuthService {
  // private baseUrl = '/assets/db.json'; // base URL for local data
-   private baseUrl = "/assets/dbs.json"
+   private baseUrl = "http://localhost:3000/dbs.json"
   constructor(private http: HttpClient) { }
 
   login(credentials: { email: string; password: string }): Observable<any> {
@@ -17,7 +17,7 @@ export class AuthService {
 
   register(user: { name: string; email: string; password: string }): Observable<any> {
     // Corrected URL: no `db.json` in local operations
-    return this.http.post(`${this.baseUrl}/register`, user);
+    return this.http.post(`${this.baseUrl}`, user);
   }
 
   logout(): void {

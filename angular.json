@@ -26,6 +26,7 @@
             "outputPath": "dist/expense-tracker",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "externalDependencies":[""],
             "polyfills": [
               "zone.js"
             ],
@@ -92,10 +93,7 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+             "src/assets"
             ],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
