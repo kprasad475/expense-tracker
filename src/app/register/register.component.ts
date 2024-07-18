@@ -15,7 +15,7 @@ export class RegisterComponent {
 
   onSubmit(){
     this.service.register(this.user).subscribe(response =>{
-      this.router.navigate(['/login']);
+     this.router.navigate(['/login']);
     })
   }
 }

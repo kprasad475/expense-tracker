@@ -7,6 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "start-mock-api": "json-server --watch db.json"
+,
     "serve:ssr:expense-tracker": "node dist/expense-tracker/server/server.mjs"
   },
   "private": true,
