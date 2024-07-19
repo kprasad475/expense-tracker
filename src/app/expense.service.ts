@@ -7,7 +7,7 @@ import { Expense } from './expense-model';
   providedIn: 'root'
 })
 export class ExpenseService {
-  private baseUrl = '/assets/db.json';
+  private baseUrl = "http://localhost:3000/expenses";
   constructor(private http:HttpClient) { }
 
   addExpense(expense: Expense): Observable<any> {

@@ -18,4 +18,6 @@ export class RegisterComponent {
      this.router.navigate(['/login']);
     })
   }
+
+ 
 }

@@ -26,6 +26,7 @@
             "outputPath": "dist/expense-tracker",
             "index": "src/index.html",
             "browser": "src/main.ts",
+
             "externalDependencies":[""],
             "polyfills": [
               "zone.js"
@@ -91,6 +92,7 @@
               "zone.js",
               "zone.js/testing"
             ],
+            
             "tsConfig": "tsconfig.spec.json",
             "assets": [
              "src/assets"

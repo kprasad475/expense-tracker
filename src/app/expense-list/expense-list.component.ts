@@ -15,6 +15,7 @@ expenses:Expense[]=[]
   ngOnInit(){
       this.service.getExpenses().subscribe(data =>{
         this.expenses=data;
+        console.log(this.expenses)
       })
   }
 
