@@ -1,22 +1,19 @@
-<h2>Expense List</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Amount</th>
-      <th>Date</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let expense of expenses">
-      <td>{{ expense.description }}</td>
-      <td>{{ expense.amount }}</td>
-      <td>{{ expense.date }}</td>
-      <td>
-        <button (click)="editExpense(expense)">Edit</button>
-        <button (click)="deleteExpense(expense.id)">Delete</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div *ngFor="let expense of expenses">
+  <span>{{ expense.description }} - {{ expense.amount }} - {{ expense.date }}</span>
+  <button (click)="editExpense(expense)">Edit</button>
+  <button (click)="deleteExpense(expense.id)">Delete</button>
+</div>
+
+<!-- Edit Expense Modal -->
+<div *ngIf="selectedExpense" class="modal">
+  <form (ngSubmit)="updateExpense()">
+    <label>Description:</label>
+    <input [(ngModel)]="selectedExpense.description" name="description">
+    <label>Amount:</label>
+    <input [(ngModel)]="selectedExpense.amount" name="amount">
+    <label>Date:</label>
+    <input [(ngModel)]="selectedExpense.date" name="date" type="date">
+    <button type="submit">Update</button>
+    <button type="button" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>

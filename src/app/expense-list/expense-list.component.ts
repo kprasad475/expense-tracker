@@ -10,6 +10,8 @@ import { ExpenseService } from '../expense.service';
 export class ExpenseListComponent implements OnInit{
 
 expenses:Expense[]=[]
+selectedExpense:Expense | null = null
+
   constructor(private service:ExpenseService){}
 
   ngOnInit(){
@@ -19,9 +21,29 @@ expenses:Expense[]=[]
       })
   }
 
-  editExpense(expense:any){
-
+  editExpense(expense:Expense){
+this.selectedExpense = {...expense};
   }
+
+  updateExpense() {
+    if (this.selectedExpense && this.selectedExpense.id) {
+      console.log(`Updating expense with ID: ${this.selectedExpense.id}`);
+      this.service.updateExpense(this.selectedExpense.id, this.selectedExpense).subscribe(response => {
+        const index = this.expenses.findIndex(exp => exp.id === this.selectedExpense?.id);
+        if (index !== -1 && this.selectedExpense) {
+          this.expenses[index] = this.selectedExpense!;
+        }
+        this.selectedExpense = null; // Close the modal
+      });
+    }
+  }
+  
+
+  cancelEdit(){
+    this.selectedExpense = null;
+  }
+
+  
 
   deleteExpense(id: string | undefined) {
     if (id) {  // Type guard to ensure id is not undefined
