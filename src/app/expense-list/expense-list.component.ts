@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Expense } from '../expense-model';
 import { ExpenseService } from '../expense.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+
 
 @Component({
   selector: 'app-expense-list',
@@ -12,7 +15,7 @@ export class ExpenseListComponent implements OnInit{
 expenses:Expense[]=[]
 selectedExpense:Expense | null = null
 
-  constructor(private service:ExpenseService){}
+  constructor(private service:ExpenseService,private dialog:MatDialog){}
 
   ngOnInit(){
       this.service.getExpenses().subscribe(data =>{
@@ -21,27 +24,24 @@ selectedExpense:Expense | null = null
       })
   }
 
-  editExpense(expense:Expense){
-this.selectedExpense = {...expense};
-  }
+  openEditDialog(expense: any) {
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      width: '300px',
+      data: { expense }
+    });
 
-  updateExpense() {
-    if (this.selectedExpense && this.selectedExpense.id) {
-      console.log(`Updating expense with ID: ${this.selectedExpense.id}`);
-      this.service.updateExpense(this.selectedExpense.id, this.selectedExpense).subscribe(response => {
-        const index = this.expenses.findIndex(exp => exp.id === this.selectedExpense?.id);
-        if (index !== -1 && this.selectedExpense) {
-          this.expenses[index] = this.selectedExpense!;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Update the expense in the list with the result
+        const index = this.expenses.findIndex(e => e.id === result.id);
+        if (index !== -1) {
+          this.expenses[index] = result;
         }
-        this.selectedExpense = null; // Close the modal
-      });
-    }
+      }
+    });
   }
-  
 
-  cancelEdit(){
-    this.selectedExpense = null;
-  }
+ 
 
   
 

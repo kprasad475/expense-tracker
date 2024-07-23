@@ -14,7 +14,11 @@ import { ExpenseDetailComponent } from './expense-detail/expense-detail.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 
 
 
@@ -27,14 +31,18 @@ import { MatInputModule } from '@angular/material/input';
     DashboardComponent,
     AddExpenseComponent,
     ExpenseListComponent,
-    ExpenseDetailComponent
+    ExpenseDetailComponent,
+    EditDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule
   ],
   providers: [
     provideClientHydration(),

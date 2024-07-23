@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Edit Expense</h2>
+<form (ngSubmit)="updateExpense()">
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput [(ngModel)]="data.expense.description" name="description">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Amount</mat-label>
+    <input matInput [(ngModel)]="data.expense.amount" name="amount">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Date</mat-label>
+    <input matInput [(ngModel)]="data.expense.date" name="date" type="date">
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" type="submit">Update</button>
+    <button mat-button type="button" mat-dialog-close>Cancel</button>
+  </div>
+</form>

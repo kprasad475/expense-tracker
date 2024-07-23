@@ -5,7 +5,7 @@
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #eb8467;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
@@ -23,4 +23,10 @@
     align-self: center;
     margin-top: 20px;
   }
+  .mat-mdc-raised-button[disabled], .mat-mdc-raised-button.mat-mdc-button-disabled {
+    cursor: default;
+    pointer-events: none;
+    color: var(--mdc-protected-button-disabled-label-text-color);
+    background-color: rgb(235 230 156 / 86%);
+}
   

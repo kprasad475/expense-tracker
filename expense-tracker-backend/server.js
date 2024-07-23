@@ -38,6 +38,17 @@ app.put('/expenses/:id', (req, res) => {
     res.status(404).send('Expense not found');
   }
 });
+app.delete('/expenses/:id', (req, res) => {
+  const { id } = req.params;
+  const index = expenses.findIndex(exp => exp.id === id);
+
+  if (index !== -1) {
+    expenses.splice(index, 1);
+    res.status(204).send();
+  } else {
+    res.status(404).send('Expense not found');
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);

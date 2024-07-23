@@ -1,19 +1,9 @@
-<div *ngFor="let expense of expenses">
-  <span>{{ expense.description }} - {{ expense.amount }} - {{ expense.date }}</span>
-  <button (click)="editExpense(expense)">Edit</button>
-  <button (click)="deleteExpense(expense.id)">Delete</button>
-</div>
-
-<!-- Edit Expense Modal -->
-<div *ngIf="selectedExpense" class="modal">
-  <form (ngSubmit)="updateExpense()">
-    <label>Description:</label>
-    <input [(ngModel)]="selectedExpense.description" name="description">
-    <label>Amount:</label>
-    <input [(ngModel)]="selectedExpense.amount" name="amount">
-    <label>Date:</label>
-    <input [(ngModel)]="selectedExpense.date" name="date" type="date">
-    <button type="submit">Update</button>
-    <button type="button" (click)="cancelEdit()">Cancel</button>
-  </form>
-</div>
+<mat-card *ngFor="let expense of expenses" class="expense-card">
+  <mat-card-content>
+    <span>{{ expense.description }} - {{ expense.amount }} - {{ expense.date }}</span>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary" (click)="openEditDialog(expense)">Edit</button>
+    <button mat-button color="warn" (click)="deleteExpense(expense.id)">Delete</button>
+  </mat-card-actions>
+</mat-card>
